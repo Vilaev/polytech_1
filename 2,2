@@ -1,0 +1,11 @@
+def temp(tc):
+    for i in range(tc):
+        tf = (9 / 5) * tc + 32
+    return tf
+
+def main():
+    tc = int(input('Я цельсий введи меня: '))
+    while tc >= -273:
+        tf = temp(tc)
+        print('\приколы по цельсию', tc,'стали баном', tf, 'стали баном по фаренгею.')
+        tc = int(input('Введите температуру по Цельсию: '))
