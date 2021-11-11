@@ -1,0 +1,9 @@
+a = float(input())
+if a % 5 !=0 and a % 7 !=0:
+   print('zerozero')
+elif a % 5 ==0 and a % 7 !=0:
+   print('zeroone')
+elif a % 5!=0 and a % 7 ==0:
+    print('onezero')
+elif a % 35==0:
+    print('oneone')
