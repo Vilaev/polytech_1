@@ -1,0 +1,10 @@
+def nested_sum(t):
+    a = 0  
+    for i in t:
+        if isinstance(i, list):  
+            a += nested_sum(i)
+        else:
+            a += i
+    return a
+t = [1,2,3]
+print(nested_sum(t))
