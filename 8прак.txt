@@ -1,0 +1,113 @@
+1)import argparse
+import os.path
+
+parser = argparse.ArgumentParser(description='10 строк файла')
+parser.add_argument('-file', dest="file")
+
+filename = parser.parse_args().file
+isfile = os.path.exists(filename)
+
+if isfile:
+    filetxt = (open(filename, 'r'))
+    filetxt = filetxt.read()
+else:
+    filetxt = "Файла не существует"
+
+
+print(filetxt)
+2)import argparse
+import os.path
+
+#Добавление аргументов и инициализация парсера
+parser = argparse.ArgumentParser(description='Файл')
+parser.add_argument('-file1', dest="file1")
+parser.add_argument('-file2', dest="file2")
+
+#Сбор данных
+file1 = parser.parse_args().file1
+file2 = parser.parse_args().file2
+
+#Проверка
+isfile1 = os.path.exists(file1)
+isfile2= os.path.exists(file2)
+
+if isfile1 and isfile2:
+    #Сбор данных из файлов
+    fileData1 = (open(file1, 'r'))
+    fileData1 = fileData1.read()
+    fileData2 = (open(file2, 'r'))
+    fileData2 = fileData2.read()
+
+    print(fileData1 + fileData2)
+
+3)import argparse
+import os.path
+
+parser = argparse.ArgumentParser(description='Файл')
+parser.add_argument('-file', dest="file")
+
+filename = parser.parse_args().file
+isfile = os.path.exists(filename)
+
+if isfile:
+    #Читка файла
+    filetxt = (open(filename, 'r'))
+    filetxt = filetxt.read()
+    filetxt = filetxt.split("\n")
+
+    #Создание нового файла
+    newFile = open("newFile.txt", 'w')
+    for i in filetxt:
+        newFile.write("1: " + i)
+        newFile.write("\n")
+else:
+    print("Файла не существует")
+4)
+import argparse
+import os.path
+
+parser = argparse.ArgumentParser(description='10 строк файла')
+parser.add_argument('-file', dest="file")
+
+filename = parser.parse_args().file
+isfile = os.path.exists(filename)
+
+if isfile:
+    filetxt = (open(filename, 'r'))
+    filetxt = filetxt.read()
+    filetxt = filetxt.split(" ")
+
+    lenWord = 0
+    maxWord = max(filetxt, key=lambda word: len(word))
+    print(maxWord)
+else:
+    print("Файла не существует")
+5)import argparse
+import os.path
+import random
+
+parser = argparse.ArgumentParser(description='10 строк файла')
+parser.add_argument('-file', dest="file")
+
+filename = parser.parse_args().file
+isfile = os.path.exists(filename)
+
+if isfile:
+    filetxt = (open(filename, 'r'))
+    filetxt = filetxt.read()
+    filetxt = filetxt.split("\n")
+
+    arr1 = []
+    arr2 = []
+    for i in filetxt:
+        i = i.split(", ")
+        arr1.append(i[0])
+        arr2.append(i[1])
+
+    result = str.capitalize(random.choice(arr1)) + str.capitalize(random.choice(arr2))
+    print(result)
+    
+
+else:
+    print("Файла не существует")
+
