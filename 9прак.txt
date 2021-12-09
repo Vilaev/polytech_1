@@ -1,0 +1,80 @@
+import random
+import time
+
+def createList(cycle):
+    start_time = time.time()
+    mass = []
+    for i in range(cycle) :
+            num = random.randint(1,cycle)
+            if num not in mass :
+                mass.append(num)
+    return mass
+
+#Линейный поиск
+def linSearch(cycle):
+    start_time = time.time()
+    listik = createList(cycle)
+    randNum = random.randint(1,cycle)
+    num = 0
+    res = False
+    for i in listik:
+        if int(i) == int(randNum):
+            res = True
+        num += 1
+
+    if res:
+        print("Нашел! Позиция: " + str(num) + " Исполнение: %s Секунд" % (time.time() - start_time))
+        
+
+# linSearch(1)
+# linSearch(10)
+# linSearch(100)
+# linSearch(1000)
+# linSearch(1000000)
+
+#Бинарный поиск
+def BinarySearch(cycle,key): 
+    start_time = time.time()
+    mass = createList(cycle)
+    left = -1 
+    right = len(mass) 
+    while right > left + 1: 
+        middle = (left + right) // 2 
+        if mass[middle] >= key: 
+            right = middle 
+        else: 
+            left = middle 
+    print("Нашел! Позиция: "+  str(right+1) + " Исполнение: %s Секунд" % (time.time() - start_time))
+
+
+# BinarySearch(cycle = 1,key = 1)
+# BinarySearch(cycle = 10,key = 5)
+# BinarySearch(cycle = 100,key = 50)
+# BinarySearch(cycle = 1000,key = 500)
+# BinarySearch(cycle = 1000000,key = 50000)
+
+#Бинарный рекурсивынй поиск
+def binarySearch(alist, item):
+    start_time = time.time()
+    first = 0
+    last = len(alist)-1
+    found = False
+	
+    while first<=last and not found:
+	    midpoint = (first + last)//2
+	    if alist[midpoint] == item:
+	        found = True
+	    else:
+	        if item < alist[midpoint]:
+	            last = midpoint-1
+	        else:
+	            first = midpoint+1
+	
+    if found:
+        print("Нашел! Исполнение: %s Секунд" % (time.time() - start_time))
+    else:
+        print("Такого нет( Исполнение: %s Секунд" % (time.time() - start_time))
+
+
+binarySearch(createList(100), 10)
+
