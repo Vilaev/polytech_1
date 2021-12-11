@@ -1,0 +1,87 @@
+1)#Пространственная сложность => O(n) 
+#Временная сложность => O(2n)
+
+def fiba(n):
+    if n in (1, 2):
+        return 1
+    return fiba(n - 1) + fiba(n - 2)
+print(fiba(6))
+
+2)#Сложность алгоритма => n * log n
+key = {1: 1, 2: 1}  # Номер числа: число Фибоначчи 
+
+def memFib(num):
+    result = key.get(num)
+    if result is None:
+        result = memFib(num-2) + memFib(num-1)
+        key[num] = result
+    return result
+
+#Вывод
+print(memFib(6))
+3)key = {1: 1, 2: 1}  # Номер числа: число Фибоначчи
+
+def memoCyc(num):
+    result = key.get(num)
+    while result == None:
+        result = memoCyc(num-2) + memoCyc(num-1)
+        key[num] = result
+    return result
+
+#Вывод
+print(memoCyc(6))
+4)
+import random
+import time
+
+#Создание списка 
+def createList(cycle):
+    start_time = time.time()
+    mass = []
+    for i in range(cycle) :
+            num = random.randint(1,cycle)
+            if num not in mass :
+                mass.append(num)
+    return mass
+
+
+#Интерполяционный поиск
+def interSearch(mass, num):
+    start_time = time.time()
+    low = 0
+    high = (len(mass) - 1)
+    while num >= mass[low] and num <= mass[high] and low <= high:
+        index = low + int(((float(high - low) / ( mass[high] - mass[low])) * ( num - mass[low])))
+        if mass[index] == num:
+            return index
+            print("Время поиска %s" % (time.time()-start_time))
+        if mass[index] < num:
+            low = index + 1;
+        else:
+            high = index - 1;
+    return -1
+
+
+# interSearch(mass = createList(10), num = 1)
+
+
+#Бинарный поиск (9 практика)
+def BinarySearch(cycle,key): 
+    start_time = time.time()
+    mass = createList(cycle)
+    left = -1 
+    right = len(mass) 
+    while right > left + 1: 
+        middle = (left + right) // 2 
+        if mass[middle] >= key: 
+            right = middle 
+        else: 
+            left = middle 
+    print("Нашел! Позиция: "+  str(right+1) + " Исполнение: %s Секунд" % (time.time() - start_time))
+
+
+# BinarySearch(cycle = 1,key = 1)
+# BinarySearch(cycle = 10,key = 5)
+# BinarySearch(cycle = 100,key = 50)
+# BinarySearch(cycle = 1000,key = 500)
+# BinarySearch(cycle = 1000000,key = 50000)
