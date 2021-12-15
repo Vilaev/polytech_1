@@ -1,0 +1,21 @@
+1) num = int(input("Pls wright tomeee: "))
+if (num % 2) == 0:
+   print("{0} is Even :)))".format(num))
+else:
+   print("{0} is Odd :((((".format(num))
+
+2)print( "Фаренгейт: " + str(int(input()) * (9/5) + 32))
+
+3)a = float(input())
+if a % 5 !=0 and a % 7 !=0:
+   print('zerozero')
+elif a % 5 ==0 and a % 7 !=0:
+   print('zeroone')
+elif a % 5!=0 and a % 7 ==0:
+    print('onezero')
+elif a % 35==0:
+    print('oneone')
+
+4) import math
+x = float(input())
+print(x **0.5)
