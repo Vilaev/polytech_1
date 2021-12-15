@@ -1,0 +1,40 @@
+1)#Сложность - O(n**2)
+def bubbleSort(mass):
+    n = len(mass)
+ 
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if mass[j] > mass[j + 1] :
+                mass[j], mass[j + 1] = mass[j + 1], mass[j]
+
+
+mass = [64, 34, 25, 12, 22, 12, 15]
+
+for i in range(len(mass)):
+    print ("% d" % mass[i])
+2) #Сложность - O(n)
+def countSort(a):
+    acc=[]
+    for i in range(101):
+        acc+=[0]
+    for i in a:
+        acc[i]+=1
+    j=0
+    for i in range(101):
+        if acc[i]>0:
+            for k in range(acc[i]):
+                a[j]=i
+                j+=1
+3)
+def merge(mass1, mass2):
+    result, it1, it2 = [], iter(mass1), iter(mass2)
+    el1 = next(it1, None)
+    el2 = next(it2, None)
+    while el1 is not None or el2 is not None:
+        if el1 is None or (el2 is not None and el2 < el1):
+            result.append(el2)
+            el2 = next(it2, None)
+        else:
+            result.append(el1)
+            el1 = next(it1, None)
+    return result
